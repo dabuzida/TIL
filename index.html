@@ -45,14 +45,24 @@
             <li>
                 img 태그에 속성 width주는 방법
                 -attribute
-                <img width="300px">
+                ex) &ltimg width="300px"&gt
+
                 -css
+                ex)
+                &ltstyle&gt
+                img {
+                ...
+                }
+                &lt/style&gt
+
                 -inline style(inline css)
+                &ltimg style="width: 300px;"&gt
 
-                와 css로 width property는 동일한
-                속성을 주고, 충돌시 css가 이김 (firefox, chrome에서는 분명)
-
-            </li>
+                모두 동일한 효과 적용.
+                충돌시 우선순위는: attribute < css < inline style inline style은 잘 안쓰고, attribute, css를 주로쓴다 css를 써서 html과 분리해서
+                    써주는게 정석이고 attribute까지 써주는 경우는 사용자 경험(파일 로드시 html이 먼저 로드)과 특별한 태그들 한정 svg같은
+                    https://css-tricks.com/whats-the-difference-between-width-height-in-css-and-width-height-html-attributes/
+                    </li>
             <li>
                 셀렉터는 범위가 더 작을 수록 우선함
                 즉, id > class >tag이름
