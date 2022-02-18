@@ -139,6 +139,29 @@
                 Hooks: 함수형 컴포넌트의 상태관리 라이브러리
                 -useState: 컴포넌트에서 상태관리를 사용하게 해줌
                 -useRef: DOM 선택, 컴포넌트 안에서 조회 및 수정 할 수 있는 변수 관리,
+                -useEffect: 컴포넌트가 
+                            처음 나타났을때(마운트됐을때), 
+                            사라질때(언마운트됐을때), 
+                            특정 props가 바뀔때(업데이트될때) 특정 작업을 처리
+                            모양: useEffect(callbackFn, [deps]), [deps]: 의존값이 들어있는 배열
+                            특징
+                            1. deps배열을 비웠을때([]), 컴포넌트가 처음 나타날때만 useEffect 에 등록한 함수실행(callbackFn 실행)
+                            2. useEffect는 cleanup 함수를 반환함. 이는 useEffect에 대한 뒷정리를 함. deps가 비어있는 경우, 컴포넌트가 사라질때 호출됨
+                            3. deps에 값이 존재하면,
+                                 컴포넌트가 처음 마운트/언마운트 될때,
+                                 지정한 값이 바뀌기 직전/바뀔때,
+                                 그 값이 호출됨
+
+                            3. 마운트 시 하는 작업
+                                -props로 받은 값을 컴포넌트의 로컬 상태로 설정
+                                -외부 API 요청
+                                -라이브러리 사용
+                                -setInterval을 통한 반복setInterval 을 통한 반복작업 혹은 setTimeout 을 통한 작업 예약
+                            4. 언마운트 시 하는 작업
+                                -setInterval, setTimeout 을 사용하여 등록한 작업들 clear 하기 (clearInterval, clearTimeout)                                
+                                -라이브러리 인스턴스 제거
+                            
+
             </li>
             <li>
                 spread operator는 배열, 객체 모두 이용가능
@@ -149,10 +172,13 @@
                 구조분해할당(비구조화 할당) 시, 객체 내의 변수와 새로 생성하는 변수의 이름이 같아야 함.
             </li>
             <li>
-
+                eventhandler 종류: onclick, onchange ...
+                event handler는 callback 을 받는다
+                인자를 넘겨야하면, () => func(argument) 식으로 쓸 수 있다
+                onRemove={() => onRemove(user.id)}
             </li>
             <li>
-
+                setTimeout(callbackFn, t[ms]); t[ms] 후 callbackFn 실행
             </li>
             <li>
 
