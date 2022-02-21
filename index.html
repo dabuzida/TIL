@@ -135,6 +135,13 @@
                 객체는 Object.assign(); 배열은 Array.from(); 을 쓸 수 있다(여러 방법존재)
             </li>
             <li>
+                React 컴포넌트가 렌더링을 수행하는 시점
+                    Props가 변경되었을 때
+                    State가 변경되었을 때
+                    forceUpdate() 를 실행하였을 때
+                    부모 컴포넌트가 렌더링되었을 때
+            </li>
+            <li>
                 Hooks의 종류와 용도
                 Hooks: 함수형 컴포넌트의 상태관리 라이브러리
                 -useState: 컴포넌트에서 상태관리를 사용하게 해줌
@@ -160,6 +167,10 @@
                             4. 언마운트 시 하는 작업
                                 -setInterval, setTimeout 을 사용하여 등록한 작업들 clear 하기 (clearInterval, clearTimeout)                                
                                 -라이브러리 인스턴스 제거
+                -useMemo: cont x = useMemo(callbackFn, [deps]);// useMemo 반환값은 callbackFn의 반환값
+                            deps가 바뀌면 callbackFn이 실행 => 근데 useMemo가 있는 코드만 실행x
+                            App.js가 다시 실행.
+                -useCallback: 컴포넌트의 렌더링마다 선언했던 함수들도 재선언
                             
 
             </li>
@@ -181,6 +192,19 @@
                 setTimeout(callbackFn, t[ms]); t[ms] 후 callbackFn 실행
             </li>
             <li>
+                불필요한 렌더링 방지해야한다
+                -React.memo(...)를 이용해서 변화가 없는 하위컴포넌트가
+                상위컴포넌트 재랜더링 시, 또 렌더링 되지 않게 한다
+                -useCallback( , )을 써서, 첫번째인자는 만들고자 하는 함수.
+                두번째 인자에 넣은 배열 내 원소들이 값이 바뀌면 첫번째 인자인 함수를 업데이트
+                그 함수에 주시하고 있는 두번째 인자의 원소들이 있으니깐 => 함수를 매 렌더링마다
+                선언하는게 아니라 변화가 존재할때만 선언하도록
+                
+                그런데 두번째 인자가 자주 사용 되는 값(useState로)이라 useCallback을 쓴 소용이 없을때
+                첫번째 인자에서 setState 시 callback(함수형 업데이트)함수+매개변수는 자주 사용하는 변수로 하고, 
+                두번째 인자는 비워서 함수생성은 한번만 하고, 매개변수는 항상 최신으로 실행되게 할 수 있다
+
+
 
             </li>
 
