@@ -140,6 +140,9 @@
                     State가 변경되었을 때
                     forceUpdate() 를 실행하였을 때
                     부모 컴포넌트가 렌더링되었을 때
+
+                -처음 시작할때는 모든 컴포넌트 렌더링. 처음 시작이므로
+                -vsc 변경후 저장은 변경 컴포넌트 포함 하위만 리렌더링
             </li>
             <li>
                 Hooks의 종류와 용도
@@ -171,7 +174,10 @@
                             deps가 바뀌면 callbackFn이 실행 => 근데 useMemo가 있는 코드만 실행x
                             App.js가 다시 실행.
                 -useCallback: 컴포넌트의 렌더링마다 선언했던 함수들도 재선언
-                            
+                -useReducer: useState와 같은 상태관리 라이브러리. 차이점은 상태 업데이트 로직을 컴포넌트에서 분리시킬수있다
+                    const [state, useState] = useState(state초기값), useState로 state를 업데이트
+                    const [state, dispatch] = useReducer(reducer, state초기값), 
+                        dispatch로 state를 업데이트 실행 -> reducer function이 실행되어 반환값이 state의 새로운 값이 됨
 
             </li>
             <li>
